@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import shortid from 'shortid';
+import {SegmentContainer} from './components/SegmentContainer';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: [],
+    }
+  }
+
+  componentWillMount = () => {
+    const newSegment = {
+      id: shortid(),
+      title: "Main segment",
+      type: "segment",
+      description: "Replace this description with something for your segment",
+      content: [],
+    }
+
+    this.setState({
+      content: [...this.state.content, newSegment],
+    })
+
+  }
+
   render() {
+    const segment = this.state.content[0]
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <SegmentContainer {...segment} />
+    )
   }
 }
 
