@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.7.0",
     "react-beautiful-dnd": "^10.0.4",
+    "react-component-tree": "^2.0.0-beta.14",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",
     "reactstrap": "^7.1.0",

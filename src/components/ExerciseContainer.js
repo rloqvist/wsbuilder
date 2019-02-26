@@ -11,10 +11,24 @@ const DisplayExercise = args => {
   return (
     <Card>
       <CardBody>
-        <CardTitle>{args.title}</CardTitle>
+        <CardTitle>{args.title}<Button color="link" onClick={() => args.onDelete(args.id)}>delete</Button></CardTitle>
         <CardSubtitle>{args.exerciseType}</CardSubtitle>
         <CardText>{args.description}</CardText>
-        <Button>Edit exercise</Button>
+        <Button onClick={args.toggleEdit}>Edit exercise</Button>
+      </CardBody>
+    </Card>
+  )
+}
+
+const EditExercise = args => {
+  console.log("EditExercise args:", args);
+  return (
+    <Card>
+      <CardBody>
+        <CardTitle>{args.title}<Button color="link" onClick={() => args.onDelete(args.id)}>delete</Button></CardTitle>
+        <CardSubtitle>{args.exerciseType}</CardSubtitle>
+        <CardText>{args.description}</CardText>
+        <Button onClick={args.toggleEdit}>Finished editing</Button>
       </CardBody>
     </Card>
   )
@@ -29,11 +43,25 @@ export class ExerciseContainer extends Component {
     }
   }
 
+  toggleEdit = () => {
+    this.setState({
+      editing: !this.state.editing,
+    })
+  }
+
   render() {
     if (!this.state.editing) {
-      return <StyledExerciseWrapper><DisplayExercise {...this.props} /></StyledExerciseWrapper>;
+      return (
+        <StyledExerciseWrapper>
+          <DisplayExercise {...this.props} toggleEdit={this.toggleEdit} />
+        </StyledExerciseWrapper>
+      )
     }
 
-    return <div />;
+    return (
+      <StyledExerciseWrapper>
+        <EditExercise {...this.props} toggleEdit={this.toggleEdit} />
+      </StyledExerciseWrapper>
+    )
   }
 }
