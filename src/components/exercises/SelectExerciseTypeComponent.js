@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
-const options = [
-  'PlainExercise',
-  'MultisetExercise',
-  'InlineExercise',
-  'CardioExercise',
-  'IntervalExercise',
-];
+import {EXERCISE_TYPES} from '../../constants';
 
 export class SelectExerciseTypeComponent extends Component {
   constructor(props) {
@@ -33,8 +26,8 @@ export class SelectExerciseTypeComponent extends Component {
       <Dropdown isOpen={this.state.open} toggle={this.toggle}>
         <DropdownToggle caret>{this.state.exerciseType}</DropdownToggle>
         <DropdownMenu>
-          {options.map((option, index) =>{
-            return <DropdownItem key={option} onClick={() => this.handleSetType(option)}>{option}</DropdownItem>
+          {EXERCISE_TYPES.map((type, index) =>{
+            return <DropdownItem key={type} onClick={() => this.handleSetType(type)}>{type}</DropdownItem>
           })}
         </DropdownMenu>
       </Dropdown>

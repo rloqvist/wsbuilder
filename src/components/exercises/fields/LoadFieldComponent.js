@@ -14,18 +14,8 @@ import {
   FormGroup,
   Label,
   Col
- } from 'reactstrap';
-
-const LOAD_TYPES = ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE"];
-
-const suffices = {
-  WEIGHT: "kg",
-  PERCENTAGE: "%",
-  HEIGHT: "cm",
-  LENGTH: "m",
-  DISTANCE: "km",
-  HEARTRATE: "bpm"
-}
+} from 'reactstrap';
+import {LOAD_TYPES, suffices} from '../../../constants';
 
 export class LoadFieldComponent extends Component {
   constructor(props) {

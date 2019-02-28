@@ -14,15 +14,8 @@ import {
   FormGroup,
   Label,
   Col
- } from 'reactstrap';
-
-const WORK_TYPES = ["DISTANCE", "TIME", "REPETITIONS"];
-
-const suffices = {
-  REPETITIONS: "reps",
-  DISTANCE: "km",
-  TIME: "s",
-}
+} from 'reactstrap';
+import {WORK_TYPES, suffices} from '../../../constants';
 
 export class WorkFieldComponent extends Component {
   constructor(props) {
