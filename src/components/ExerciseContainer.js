@@ -4,6 +4,7 @@ import {Card, CardBody, Button, Form} from 'reactstrap';
 import {Exercises} from './exercises'
 import {store} from '../store';
 import * as Showdown from "showdown";
+import {ExerciseComponent} from './ExerciseComponent';
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -68,9 +69,14 @@ export class ExerciseContainer extends Component {
     this.setState({rounds});
   }
 
+  handleSetRest = rest => {
+    store.updateItem({id: this.props.id, key: "rest", value: rest})
+    this.setState({rest});
+  }
+
   render() {
     console.log(this.state);
-    const Exercise = Exercises[this.state.exerciseType]; // this.state.exerciseType
+    //const Exercise = Exercises[this.state.exerciseType]; // this.state.exerciseType
     const props = {
       onSetTitle: this.handleSetTitle,
       onSetDescription: this.handleSetDescription,
@@ -78,6 +84,7 @@ export class ExerciseContainer extends Component {
       onSetLoad: this.handleSetLoad,
       onSetWork: this.handleSetWork,
       onSetRounds: this.handleSetRounds,
+      onSetRest: this.handleSetRest,
       ...this.state,
     }
     return (
@@ -86,10 +93,10 @@ export class ExerciseContainer extends Component {
           <CardBody>
             {this.state.editing ? (
               <Form>
-                <Exercise editing {...props} />
+                <ExerciseComponent {...props} />
               </Form>
             ) : (
-              <Exercise {...props} />
+              <ExerciseComponent {...props} />
             )}
             <Button onClick={this.toggleEdit}>Toggle edit mode</Button>
           </CardBody>

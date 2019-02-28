@@ -25,7 +25,7 @@ export class RoundsFieldComponent extends Component {
       <FormGroup row>
         <Label sm={2}>Rounds</Label>
         <Col sm={10}>
-          <Input placeholder="Ex. 3" defaultValue={this.props.rounds} onChange={event => this.handleSetValue(event.target.value)} type="number" />
+          <Input placeholder="Ex. 3" defaultValue={this.props.rounds} onChange={event => this.handleSetRounds(event.target.value)} type="number" />
         </Col>
       </FormGroup>
     )
