@@ -9,8 +9,8 @@ import {store} from '../store';
 const StyledSegmentWrapper = styled.div`
   margin: 10px;
   padding: 10px;
-  border-radius: 5px;
   background: #e2e3e5;
+  border-top: 10px solid white;
 `
 
 export class SegmentContainer extends Component {
@@ -101,14 +101,16 @@ export class SegmentContainer extends Component {
             }
             return <ExerciseContainer key={block.id} {...block} onDelete={this.handleDelete} />
           }) : <div><h5><i>No content in this segment yet.</i></h5></div>}
-          <Row noGutters>
-            <Col sm="6">
-              <NewExerciseComponent onCreate={this.handleAddExercise} />
-            </Col>
-            <Col sm="6">
-              <NewSegmentComponent onCreate={this.handleAddSegment} />
-            </Col>
-          </Row>
+          {!!this.props.parentId ? (
+            <Row>
+              <Col sm="6">
+                <NewExerciseComponent onCreate={this.handleAddExercise} />
+              </Col>
+              <Col sm="6">
+                <NewSegmentComponent onCreate={this.handleAddSegment} />
+              </Col>
+            </Row>
+          ) : <NewSegmentComponent onCreate={this.handleAddSegment} />}
         </StyledSegmentWrapper>
       </Container>
     )

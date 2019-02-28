@@ -1,5 +1,4 @@
 import shortid from 'shortid';
-import {fromJS} from 'immutable';
 
 class Store {
   constructor() {
