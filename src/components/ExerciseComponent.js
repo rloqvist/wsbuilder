@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup, Row, Col, Alert} from 'reactstrap';
+import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup} from 'reactstrap';
 import ReactMde from "react-mde";
 import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
 import {Exercises} from './exercises'

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import {Card, CardBody, Button, Form} from 'reactstrap';
-import {Exercises} from './exercises'
-import {store} from '../store';
 import * as Showdown from "showdown";
+import {store} from '../store';
 import {ExerciseComponent} from './ExerciseComponent';
 
 const converter = new Showdown.Converter({

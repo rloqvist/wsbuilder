@@ -1,13 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Row, Col, Alert} from 'reactstrap';
-import {SelectExerciseTypeComponent} from './SelectExerciseTypeComponent';
 import {LoadFieldComponent} from './fields/LoadFieldComponent';
 import {WorkFieldComponent} from './fields/WorkFieldComponent';
-import {RoundsFieldComponent} from './fields/RoundsFieldComponent';
-import {RestFieldComponent} from './fields/RestFieldComponent';
 import {suffices} from '../../constants';
-import ReactMde from "react-mde";
-import "react-mde/lib/styles/css/react-mde-all.css";
 
 const DisplayExercise = args => {
   return (
