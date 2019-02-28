@@ -6,6 +6,8 @@ import {LoadFieldComponent} from './fields/LoadFieldComponent';
 import {WorkFieldComponent} from './fields/WorkFieldComponent';
 import {RoundsFieldComponent} from './fields/RoundsFieldComponent';
 import {suffices} from '../../constants';
+import ReactMde from "react-mde";
+import "react-mde/lib/styles/css/react-mde-all.css";
 
 const DisplayExercise = args => {
   console.log("DisplayExercise args:", args);
@@ -13,7 +15,7 @@ const DisplayExercise = args => {
     <>
       <CardTitle><h4>{args.title}<Button color="link" onClick={() => args.onDelete(args.id)}>delete</Button></h4></CardTitle>
       <CardSubtitle><b>{args.exerciseType}</b></CardSubtitle>
-      <CardText><i>{args.description}</i></CardText>
+      <CardText dangerouslySetInnerHTML={{"__html": args.html}}></CardText>
       <Alert color="secondary">
         <Row>
           <Col md={4}>{args.load.value} {suffices[args.load.type]}</Col>
@@ -29,7 +31,11 @@ const EditExercise = args => {
   return (
     <>
       <FormGroup>
-        <Input placeholder="Name your exercise" defaultValue={args.title} />
+        <Input
+          placeholder="Name your exercise"
+          defaultValue={args.title}
+          onChange={event => args.onSetTitle(event.target.value)}
+        />
       </FormGroup>
 
       <FormGroup>
@@ -37,7 +43,10 @@ const EditExercise = args => {
       </FormGroup>
 
       <FormGroup>
-        <Input type="textarea" defaultValue={args.description} />
+        <ReactMde
+          value={args.description}
+          onChange={args.onSetDescription}
+        />
       </FormGroup>
 
       <LoadFieldComponent {...args} />

@@ -52,8 +52,8 @@ export class LoadFieldComponent extends Component {
   render() {
     return (
       <FormGroup row>
-        <Label sm={2} md={2}>Load</Label>
-        <Col sm={10} md={6}>
+        <Label sm={2}>Load</Label>
+        <Col sm={10}>
           <InputGroup>
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.load.type}</DropdownToggle>

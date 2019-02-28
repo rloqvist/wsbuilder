@@ -4,6 +4,14 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, Input, Form,
 import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
 import {Exercises} from './exercises'
 import {store} from '../store';
+import * as Showdown from "showdown";
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
 
 const StyledExerciseWrapper = styled.div`
   padding: 10px 0;
@@ -19,10 +27,26 @@ export class ExerciseContainer extends Component {
     }
   }
 
+  componentWillMount = async () => {
+    const html = await converter.makeHtml(this.props.description)
+    this.setState({html})
+  }
+
   toggleEdit = () => {
     this.setState({
       editing: !this.state.editing,
     })
+  }
+
+  handleSetTitle = title => {
+    store.updateItem({id: this.props.id, key: "title", value: title})
+    this.setState({title});
+  }
+
+  handleSetDescription = async description => {
+    store.updateItem({id: this.props.id, key: "description", value: description})
+    const html = await converter.makeHtml(description)
+    this.setState({description, html});
   }
 
   handleSetExerciseType = exerciseType => {
@@ -49,11 +73,13 @@ export class ExerciseContainer extends Component {
     console.log(this.state);
     const Exercise = Exercises[this.state.exerciseType]; // this.state.exerciseType
     const props = {
-       onSetExerciseType: this.handleSetExerciseType,
-       onSetLoad: this.handleSetLoad,
-       onSetWork: this.handleSetWork,
-       onSetRounds: this.handleSetRounds,
-       ...this.state,
+      onSetTitle: this.handleSetTitle,
+      onSetDescription: this.handleSetDescription,
+      onSetExerciseType: this.handleSetExerciseType,
+      onSetLoad: this.handleSetLoad,
+      onSetWork: this.handleSetWork,
+      onSetRounds: this.handleSetRounds,
+      ...this.state,
     }
     return (
       <StyledExerciseWrapper>

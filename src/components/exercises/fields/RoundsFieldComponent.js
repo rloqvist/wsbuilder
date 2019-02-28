@@ -33,8 +33,8 @@ export class RoundsFieldComponent extends Component {
   render() {
     return (
       <FormGroup row>
-        <Label sm={2} md={2}>Rounds</Label>
-        <Col sm={10} md={6}>
+        <Label sm={2}>Rounds</Label>
+        <Col sm={10}>
           <Input placeholder="Ex. 20" defaultValue={this.props.work.value} onChange={event => this.handleSetValue(event.target.value)} type="number" />
         </Col>
       </FormGroup>

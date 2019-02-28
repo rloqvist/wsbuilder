@@ -52,8 +52,8 @@ export class WorkFieldComponent extends Component {
   render() {
     return (
       <FormGroup row>
-        <Label sm={2} md={2}>Work</Label>
-        <Col sm={10} md={6}>
+        <Label sm={2}>Work</Label>
+        <Col sm={10}>
           <InputGroup>
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.work.type}</DropdownToggle>
