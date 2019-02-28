@@ -1,0 +1,82 @@
+import React, {Component} from 'react';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupButtonDropdown,
+  InputGroupDropdown,
+  Input,
+  Button,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  FormGroup,
+  Label,
+  Col
+ } from 'reactstrap';
+
+const WORK_TYPES = ["DISTANCE", "TIME", "REPETITIONS"];
+
+const suffices = {
+  REPETITIONS: "reps",
+  DISTANCE: "km",
+  TIME: "s",
+}
+
+export class WorkFieldComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+      ...this.props
+    };
+  }
+
+  toggle = (args) => {
+    this.setState({open: !this.state.open})
+  }
+
+  handleSetType = type => {
+    const work = {
+      ...this.state.work,
+      type,
+    }
+    this.setState({work})
+    this.props.onSetWork(work)
+  }
+
+  handleSetValue = value => {
+    const work = {
+      ...this.state.work,
+      value,
+    }
+    this.setState({work})
+    this.props.onSetWork(work)
+  }
+
+  render() {
+    return (
+      <FormGroup row>
+        <Label sm={2} md={2}>Work</Label>
+        <Col sm={10} md={6}>
+          <InputGroup>
+            <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
+              <DropdownToggle caret>{this.state.work.type}</DropdownToggle>
+              <DropdownMenu>
+                {WORK_TYPES.map(type => {
+                  return <DropdownItem onClick={() => this.handleSetType(type)} key={type}>{type}</DropdownItem>
+                })}
+              </DropdownMenu>
+            </InputGroupButtonDropdown>
+            <Input placeholder="Ex. 20" defaultValue={this.props.work.value} onChange={event => this.handleSetValue(event.target.value)} type="number" />
+            <InputGroupAddon addonType="append">
+              <InputGroupText>{suffices[this.state.work.type]}</InputGroupText>
+            </InputGroupAddon>
+          </InputGroup>
+        </Col>
+      </FormGroup>
+    )
+  }
+}

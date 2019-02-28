@@ -31,6 +31,19 @@ class Store {
     this.build = this.build.filter(item => item.id !== id);
     this.storage.setItem(this.id, JSON.stringify(this.build));
   }
+
+  updateItem = ({id, key, value}) => {
+    this.build = this.build.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          [key]: value,
+        };
+      }
+      return item;
+    })
+    this.storage.setItem(this.id, JSON.stringify(this.build));
+  }
 }
 
 export const store = new Store();

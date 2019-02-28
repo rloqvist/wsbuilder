@@ -2,19 +2,18 @@ import React, {Component} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const options = [
-  'PlainExercise',
-  'MultisetExercise',
-  'InlineExercise',
-  'CardioExercise',
+  'WEIGHT',
+  'HEIGHT',
+  'LENGTH',
 ];
 
-export class SelectTypeComponent extends Component {
+export class SelectWorkTypeComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       open: false,
-      type: this.props.exerciseType || 'Select exercise type',
+      type: this.props.work && this.props.work.type || 'Select work type',
     };
   }
 

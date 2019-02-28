@@ -10,12 +10,11 @@
     "required": true,
   },
   "work": {
-    "type": "<Enum WEIGHT|HEIGHT|LENGTH>",
+    "type": "<Enum DISTANCE|TIME|REPETITIONS>",
     "value": "<Integer>",
     "required": true,
   },
   "rounds": {
-    "type": "<Enum WEIGHT|HEIGHT|LENGTH>",
     "value": "<Integer>",
     "required": true,
   },
@@ -32,7 +31,6 @@
   "id": "<String>",
   "description": "<String>",
   "rounds": {
-    "type": "<Enum WEIGHT|HEIGHT|LENGTH>",
     "value": "<Integer>",
     "required": true,
   },
@@ -57,7 +55,7 @@
     "required": true,
   },
   "work": {
-    "type": "<Enum WEIGHT|HEIGHT|LENGTH>",
+    "type": "<Enum DISTANCE|TIME|REPETITIONS>",
     "value": "<Integer>",
     "required": true,
   },
@@ -79,13 +77,13 @@
     "required": true,
   },
   "work": {
-    "type": "<Enum DISTANCE|TIME>",
+    "type": "<Enum DISTANCE|TIME|REPETITIONS>",
     "value": "<Integer>",
     "required": true,
   },
 }
 ```
-## IntervallExercise
+## IntervalExercise
 ```json
 {
   "title": "<String>",

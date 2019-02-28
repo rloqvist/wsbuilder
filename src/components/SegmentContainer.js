@@ -7,7 +7,10 @@ import {ExerciseContainer} from './ExerciseContainer';
 import {store} from '../store';
 
 const StyledSegmentWrapper = styled.div`
+  margin: 10px;
   padding: 10px;
+  border-radius: 5px;
+  background: #eee;
 `
 
 export class SegmentContainer extends Component {
@@ -31,6 +34,15 @@ export class SegmentContainer extends Component {
       title: `${this.props.title} - Exercise ${this.countExercises()}`,
       type: "exercise",
       exerciseType: "PlainExercise",
+      load: {
+        type: "WEIGHT",
+        value: 20,
+      },
+      work: {
+        type: "REPETITIONS",
+        value: 10,
+      },
+      rounds: 3,
       description: "Replace this description with something for your exercise",
       content: [],
     }
@@ -77,14 +89,16 @@ export class SegmentContainer extends Component {
     return (
       <Container>
         <StyledSegmentWrapper>
-          {this.props.title}
-          <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
-          {content.length !== 0 && content.map(block => {
+          <h3>
+            {this.props.title}
+            <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
+          </h3>
+          {content.length !== 0 ? content.map(block => {
             if (block.type === "segment") {
               return <SegmentContainer key={block.id} {...block} onDelete={this.handleDelete} />
             }
             return <ExerciseContainer key={block.id} {...block} onDelete={this.handleDelete} />
-          })}
+          }) : <div><h5><i>No content in this segment yet.</i></h5></div>}
           <Row>
             <Col sm="6">
               <NewExerciseComponent onCreate={this.handleAddExercise} />
