@@ -102,7 +102,13 @@ export class ExerciseContainer extends Component {
     store.createItem(newExercise);
   }
 
-  handleDeleteExercise
+  handleDeleteExercise = id => {
+    store.deleteItem(id)
+
+    this.setState({
+      content: this.state.content.filter(item => item.id !== id),
+    })
+  }
 
   render() {
     const props = {
@@ -143,7 +149,7 @@ export class ExerciseContainer extends Component {
           {this.state.content.length !== 0
             && (this.state.exerciseType === "MultisetExercise" || this.state.exerciseType === "IntervalExercise")
             && this.state.content.map(exercise => {
-              return <ExerciseContainer key={exercise.id} {...exercise} onDelete={this.props.onDelete} />
+              return <ExerciseContainer key={exercise.id} {...exercise} onDelete={this.handleDeleteExercise} />
             })
           }
         </InnerExercise>
