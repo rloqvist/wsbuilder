@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, Input, Form, FormGroup } from 'reactstrap';
-import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
+import {Card, CardBody, Button, Form} from 'reactstrap';
 import {Exercises} from './exercises'
 import {store} from '../store';
 import * as Showdown from "showdown";

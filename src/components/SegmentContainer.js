@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import shortid from 'shortid';
 import styled from 'styled-components';
-import { Container, Col, Row, Card, Button } from 'reactstrap';
+import {Container, Col, Row, Button} from 'reactstrap';
 import {NewSegmentComponent, NewExerciseComponent} from './NewComponents';
 import {ExerciseContainer} from './ExerciseContainer';
 import {store} from '../store';

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import shortid from 'shortid';
+import React, {Component} from 'react';
 import {SegmentContainer} from './components/SegmentContainer';
 import {store} from './store';
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Card, CardText, CardBody, Button } from 'reactstrap';
+import {Card, CardBody, Button} from 'reactstrap';
 
 export const NewExerciseComponent = ({onCreate}) => {
   return (

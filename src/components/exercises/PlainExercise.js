@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, Input, Form, FormGroup, Row, Col, Label, Alert } from 'reactstrap';
+import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup, Row, Col, Alert} from 'reactstrap';
 import {SelectExerciseTypeComponent} from './SelectExerciseTypeComponent';
-import {SelectWorkTypeComponent} from './SelectWorkTypeComponent';
 import {LoadFieldComponent} from './fields/LoadFieldComponent';
 import {WorkFieldComponent} from './fields/WorkFieldComponent';
 import {RoundsFieldComponent} from './fields/RoundsFieldComponent';

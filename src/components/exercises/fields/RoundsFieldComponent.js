@@ -1,16 +1,6 @@
 import React, {Component} from 'react';
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroupButtonDropdown,
-  InputGroupDropdown,
   Input,
-  Button,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   FormGroup,
   Label,
   Col
