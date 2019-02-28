@@ -86,7 +86,7 @@ export class ExerciseContainer extends Component {
   }
 
   handleAddExercise = () => {
-    const title = `${this.props.title} - Exercise ${this.countExercises()}`;
+    const title = `Exercise ${this.countExercises()}`;
 
     let newExercise;
     if (this.state.exerciseType === 'IntervalExercise') {

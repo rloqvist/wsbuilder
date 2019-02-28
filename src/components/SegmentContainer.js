@@ -31,7 +31,7 @@ export class SegmentContainer extends Component {
   }
 
   handleAddExercise = () => {
-    const title = `${this.props.title} - Exercise ${this.countExercises()}`;
+    const title = `Exercise ${this.countExercises()}`;
 
     const newExercise = {...samplePlainExercise(title, this.props.id)}
 
@@ -51,7 +51,7 @@ export class SegmentContainer extends Component {
     const newSegment = {
       id: shortid(),
       parentId: this.props.id,
-      title: `${this.props.title} - Segment ${this.countSegments()}`,
+      title: `Segment ${this.countSegments()}`,
       type: "segment",
       description: "Replace this description with something for your segment",
       content: [],

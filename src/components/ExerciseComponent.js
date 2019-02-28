@@ -4,13 +4,21 @@ import ReactMde from "react-mde";
 import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
 import {Exercises} from './exercises'
 import "react-mde/lib/styles/css/react-mde-all.css";
+import styled from 'styled-components';
+
+const WrapMarkdown = styled.div`
+  img {
+    max-width: 100%;
+  }
+`;
+
 
 const DisplayExercise = args => {
   return (
     <>
       <CardTitle><h4>{args.title}<Button color="link" onClick={() => args.onDelete(args.id)}>delete</Button></h4></CardTitle>
       <CardSubtitle><b>{args.exerciseType}</b></CardSubtitle>
-      <CardText dangerouslySetInnerHTML={{"__html": args.html}}></CardText>
+      <WrapMarkdown><CardText dangerouslySetInnerHTML={{"__html": args.html}}></CardText></WrapMarkdown>
 
       {args.children}
     </>
