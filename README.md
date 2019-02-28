@@ -114,3 +114,4 @@
 [ ] MDE for description
 [ ] Delete unused imports
 [ ] Add rest
+[ ] Prettier

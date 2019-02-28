@@ -16,7 +16,7 @@ import {
   Col
  } from 'reactstrap';
 
-export class RoundsFieldComponent extends Component {
+export class RestFieldComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -25,17 +25,17 @@ export class RoundsFieldComponent extends Component {
     };
   }
 
-  handleSetRounds = rounds => {
-    this.setState({rounds})
-    this.props.onSetRounds(rounds)
+  handleSetRest = rest => {
+    this.setState({rest})
+    this.props.onSetRest(rest)
   }
 
   render() {
     return (
       <FormGroup row>
-        <Label sm={2}>Rounds</Label>
+        <Label sm={2}>Rest</Label>
         <Col sm={10}>
-          <Input placeholder="Ex. 3" defaultValue={this.props.rounds} onChange={event => this.handleSetValue(event.target.value)} type="number" />
+          <Input placeholder="Ex. 20" defaultValue={this.props.rest} onChange={event => this.handleSetValue(event.target.value)} type="number" />
         </Col>
       </FormGroup>
     )

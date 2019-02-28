@@ -5,6 +5,7 @@ import {SelectWorkTypeComponent} from './SelectWorkTypeComponent';
 import {LoadFieldComponent} from './fields/LoadFieldComponent';
 import {WorkFieldComponent} from './fields/WorkFieldComponent';
 import {RoundsFieldComponent} from './fields/RoundsFieldComponent';
+import {RestFieldComponent} from './fields/RestFieldComponent';
 import {suffices} from '../../constants';
 import ReactMde from "react-mde";
 import "react-mde/lib/styles/css/react-mde-all.css";
@@ -54,6 +55,8 @@ const EditExercise = args => {
       <WorkFieldComponent {...args} />
 
       <RoundsFieldComponent {...args} />
+
+      <RestFieldComponent {...args} />
     </>
   )
 }
