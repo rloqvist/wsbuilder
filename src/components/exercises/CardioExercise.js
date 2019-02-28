@@ -14,8 +14,8 @@ const DisplayExercise = args => {
     <>
       <Alert color="secondary">
         <Row>
-          <Col md={3}>{args.load.value} {suffices[args.load.type]}</Col>
-          <Col md={3}>{args.work.value} {suffices[args.work.type]}</Col>
+          <Col md={6}>{args.load.value} {suffices[args.load.type]}</Col>
+          <Col md={6}>{args.work.value} {suffices[args.work.type]}</Col>
         </Row>
       </Alert>
     </>

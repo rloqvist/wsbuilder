@@ -5,6 +5,7 @@ import {Container, Col, Row, Button} from 'reactstrap';
 import {NewSegmentComponent, NewExerciseComponent} from './NewComponents';
 import {ExerciseContainer} from './ExerciseContainer';
 import {store} from '../store';
+import {samplePlainExercise} from '../utils';
 
 const StyledSegmentWrapper = styled.div`
   margin: 10px;
@@ -28,24 +29,9 @@ export class SegmentContainer extends Component {
   }
 
   handleAddExercise = () => {
-    const newExercise = {
-      id: shortid(),
-      parentId: this.props.id,
-      title: `${this.props.title} - Exercise ${this.countExercises()}`,
-      type: "exercise",
-      exerciseType: "PlainExercise",
-      load: {
-        type: "WEIGHT",
-        value: 20,
-      },
-      work: {
-        type: "REPETITIONS",
-        value: 10,
-      },
-      rounds: 3,
-      description: "Replace this description with something for your exercise",
-      content: [],
-    }
+    const title = `${this.props.title} - Exercise ${this.countExercises()}`;
+
+    const newExercise = {...samplePlainExercise(title, this.props.id)}
 
     this.setState({
       content: [...this.state.content, newExercise],
