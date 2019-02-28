@@ -10,7 +10,7 @@ const StyledSegmentWrapper = styled.div`
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
-  background: #eee;
+  background: #e2e3e5;
 `
 
 export class SegmentContainer extends Component {
@@ -91,7 +91,9 @@ export class SegmentContainer extends Component {
         <StyledSegmentWrapper>
           <h3>
             {this.props.title}
-            <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
+            {this.props.parentId &&
+              <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
+            }
           </h3>
           {content.length !== 0 ? content.map(block => {
             if (block.type === "segment") {
@@ -99,7 +101,7 @@ export class SegmentContainer extends Component {
             }
             return <ExerciseContainer key={block.id} {...block} onDelete={this.handleDelete} />
           }) : <div><h5><i>No content in this segment yet.</i></h5></div>}
-          <Row>
+          <Row noGutters>
             <Col sm="6">
               <NewExerciseComponent onCreate={this.handleAddExercise} />
             </Col>

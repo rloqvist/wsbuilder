@@ -90,7 +90,7 @@
   "id": "<String>",
   "description": "<String>",
   "exercise": "<Enum CardioExercise|MultisetExercise>",
-  "laps": "<Integer>",
+  "rounds": "<Integer>",
   "rest": "<Integer>",
 }
 ```
@@ -105,14 +105,12 @@
   ],
 }
 ```
-## Build
-```json
-{
-  "title": "<String>",
-  "id": "<String>",
-  "description": "<String>",
-  "content": [
-    "<Enum Segment|Exercise>",
-  ],
-}
-```
+
+[ ] Only make inline exercise available from multiset
+[ ] Include templated parts of display and edit in all exercise type components
+[ ] Image selection
+[ ] Implement all exercise types
+[ ] Session storage instead of local storage
+[ ] MDE for description
+[ ] Delete unused imports
+[ ] Add rest

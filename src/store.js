@@ -8,7 +8,7 @@ class Store {
     if (!this.storage.getItem(this.id)) {
       const build = [{
         id: shortid(),
-        title: "Main segment",
+        title: "Mai veri speshul workot naem",
         type: "segment",
         description: "Replace this description with something for your segment",
         content: [],
