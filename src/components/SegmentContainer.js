@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import shortid from 'shortid';
 import styled from 'styled-components';
-import {Container, Col, Row, Button} from 'reactstrap';
+import {Container, Col, Row, Button, Input} from 'reactstrap';
 import {NewSegmentComponent, NewExerciseComponent} from './NewComponents';
 import {ExerciseContainer} from './ExerciseContainer';
 import {store} from '../store';
@@ -20,6 +20,8 @@ export class SegmentContainer extends Component {
 
     this.state = {
       content: store.build.filter(item => item.parentId === this.props.id) || [],
+      editing: false,
+      title: this.props.title,
     }
   }
 
@@ -70,23 +72,54 @@ export class SegmentContainer extends Component {
     })
   }
 
+  toggleEditTitle = () => {
+    this.setState({editing: !this.state.editing});
+  }
+
+  handleSetTitle = title => {
+    store.updateItem({id: this.props.id, key: "title", value: title})
+    this.setState({title});
+  }
+
   render() {
-    const content = this.state.content;
+    const {content, editing} = this.state;
     return (
       <Container>
         <StyledSegmentWrapper>
+
+
           <h3>
-            {this.props.title}
-            {this.props.parentId &&
-              <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
-            }
+            {editing ? (
+              <>
+                <Input
+                  placeholder="Section title"
+                  defaultValue={this.state.title}
+                  onChange={event => this.handleSetTitle(event.target.value)}
+                />
+                <Button color="link" onClick={this.toggleEditTitle}>finished editing</Button>
+              </>
+            ) : (
+              <>
+                {this.state.title}
+                {this.props.parentId &&
+                  <>
+                    <Button color="link" onClick={this.toggleEditTitle}>edit title</Button>
+                    <Button color="link" onClick={() => this.props.onDelete(this.props.id)}>delete</Button>
+                  </>
+                }
+              </>
+            )}
           </h3>
+
+
           {content.length !== 0 ? content.map(block => {
             if (block.type === "segment") {
               return <SegmentContainer key={block.id} {...block} onDelete={this.handleDelete} />
             }
             return <ExerciseContainer key={block.id} {...block} onDelete={this.handleDelete} />
           }) : <div><h5><i>No content in this segment yet.</i></h5></div>}
+
+
           {!!this.props.parentId ? (
             <Row>
               <Col sm="6">
@@ -97,6 +130,8 @@ export class SegmentContainer extends Component {
               </Col>
             </Row>
           ) : <NewSegmentComponent onCreate={this.handleAddSegment} />}
+
+
         </StyledSegmentWrapper>
       </Container>
     )

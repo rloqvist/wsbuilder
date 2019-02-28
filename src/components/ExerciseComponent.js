@@ -3,6 +3,7 @@ import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup} from 'react
 import ReactMde from "react-mde";
 import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
 import {Exercises} from './exercises'
+import "react-mde/lib/styles/css/react-mde-all.css";
 
 const DisplayExercise = args => {
   return (
