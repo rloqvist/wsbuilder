@@ -55,7 +55,7 @@ export class LoadFieldComponent extends Component {
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.load.type}</DropdownToggle>
               <DropdownMenu>
-                {LOAD_TYPES.map(type => {
+                {LOAD_TYPES[this.props.exerciseType].map(type => {
                   return <DropdownItem onClick={() => this.handleSetType(type)} key={type}>{type}</DropdownItem>
                 })}
               </DropdownMenu>

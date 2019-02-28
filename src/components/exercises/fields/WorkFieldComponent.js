@@ -55,7 +55,7 @@ export class WorkFieldComponent extends Component {
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.work.type}</DropdownToggle>
               <DropdownMenu>
-                {WORK_TYPES.map(type => {
+                {WORK_TYPES[this.props.exerciseType].map(type => {
                   return <DropdownItem onClick={() => this.handleSetType(type)} key={type}>{type}</DropdownItem>
                 })}
               </DropdownMenu>

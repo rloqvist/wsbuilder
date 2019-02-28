@@ -3,7 +3,7 @@ import shortid from 'shortid';
 class Store {
   constructor() {
     this.id = window.buildId;
-    this.storage = window.localStorage;
+    this.storage = window.sessionStorage;
     if (!this.storage.getItem(this.id)) {
       const build = [{
         id: shortid(),

@@ -107,11 +107,10 @@
 ```
 
 [ ] Only make inline exercise available from multiset
-[ ] Include templated parts of display and edit in all exercise type components
+[x] Include templated parts of display and edit in all exercise type components
 [ ] Image selection
 [ ] Implement all exercise types
 [ ] Session storage instead of local storage
-[ ] MDE for description
+[x] MDE for description
 [ ] Delete unused imports
-[ ] Add rest
-[ ] Prettier
+[x] Add rest
