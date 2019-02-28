@@ -43,6 +43,10 @@ class Store {
     })
     this.storage.setItem(this.id, JSON.stringify(this.build));
   }
+
+  getParentItem = parentId => {
+    return this.build.find(item => item.id === parentId);
+  }
 }
 
 export const store = new Store();

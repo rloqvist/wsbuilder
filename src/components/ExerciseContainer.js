@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {Card, CardBody, Button, Form} from 'reactstrap';
+import {Card, CardBody, Button, ButtonGroup, Form} from 'reactstrap';
 import * as Showdown from "showdown";
 import {store} from '../store';
 import {ExerciseComponent} from './ExerciseComponent';
+import {NewExerciseComponent} from './NewComponents';
+import {sampleCardioExercise, sampleInlineExercise} from '../utils';
+
+const InnerExercise = styled.div`
+  padding: 0 40px;
+`
+
+const StyledExerciseWrapper = styled.div`
+  padding: 10px 0;
+`
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -12,10 +22,6 @@ const converter = new Showdown.Converter({
   tasklists: true
 });
 
-const StyledExerciseWrapper = styled.div`
-  padding: 10px 0;
-`
-
 export class ExerciseContainer extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +29,7 @@ export class ExerciseContainer extends Component {
     this.state = {
       editing: false,
       ...this.props,
+      content: store.build.filter(item => item.parentId === this.props.id) || [],
     }
   }
 
@@ -73,9 +80,31 @@ export class ExerciseContainer extends Component {
     this.setState({rest});
   }
 
+  countExercises = () => {''
+    const exercises = this.state.content.filter(block => block.type === "exercise") || [];
+    return exercises.length + 1;
+  }
+
+  handleAddExercise = () => {
+    const title = `${this.props.title} - Exercise ${this.countExercises()}`;
+
+    let newExercise;
+    if (this.state.exerciseType === 'IntervalExercise') {
+      newExercise = {...sampleCardioExercise(title, this.props.id)}
+    } else if (this.state.exerciseType === 'MultisetExercise') {
+      newExercise = {...sampleInlineExercise(title, this.props.id)}
+    }
+
+    this.setState({
+      content: [...this.state.content, newExercise],
+    })
+
+    store.createItem(newExercise);
+  }
+
+  handleDeleteExercise
+
   render() {
-    console.log(this.state);
-    //const Exercise = Exercises[this.state.exerciseType]; // this.state.exerciseType
     const props = {
       onSetTitle: this.handleSetTitle,
       onSetDescription: this.handleSetDescription,
@@ -88,6 +117,8 @@ export class ExerciseContainer extends Component {
     }
     return (
       <StyledExerciseWrapper>
+
+
         <Card>
           <CardBody>
             {this.state.editing ? (
@@ -97,9 +128,27 @@ export class ExerciseContainer extends Component {
             ) : (
               <ExerciseComponent {...props} />
             )}
-            <Button onClick={this.toggleEdit}>Toggle edit mode</Button>
+            <ButtonGroup>
+              <Button onClick={this.toggleEdit}>Toggle edit mode</Button>
+              {(this.state.exerciseType === "MultisetExercise" ||
+                this.state.exerciseType === "IntervalExercise") && (
+                <Button outline onClick={this.handleAddExercise}>Add inner exercise</Button>
+              )}
+            </ButtonGroup>
           </CardBody>
         </Card>
+
+
+        <InnerExercise>
+          {this.state.content.length !== 0
+            && (this.state.exerciseType === "MultisetExercise" || this.state.exerciseType === "IntervalExercise")
+            && this.state.content.map(exercise => {
+              return <ExerciseContainer key={exercise.id} {...exercise} onDelete={this.props.onDelete} />
+            })
+          }
+        </InnerExercise>
+
+
       </StyledExerciseWrapper>
     )
   }

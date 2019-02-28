@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import {EXERCISE_TYPES} from '../../constants';
+import {EXERCISE_TYPES, INTERVAL_SUB_TYPES} from '../../constants';
+import {store} from '../../store';
 
 export class SelectExerciseTypeComponent extends Component {
   constructor(props) {
@@ -22,6 +23,24 @@ export class SelectExerciseTypeComponent extends Component {
   }
 
   render() {
+    const parentItem = store.getParentItem(this.props.parentId);
+    console.log('parentItem', parentItem);
+
+    if (parentItem.exerciseType === 'MultisetExercise') {
+      return null;
+    } else if (parentItem.exerciseType === 'IntervalExercise') {
+      return (
+        <Dropdown isOpen={this.state.open} toggle={this.toggle}>
+          <DropdownToggle caret>{this.state.exerciseType}</DropdownToggle>
+          <DropdownMenu>
+            {INTERVAL_SUB_TYPES.map((type, index) =>{
+              return <DropdownItem key={type} onClick={() => this.handleSetType(type)}>{type}</DropdownItem>
+            })}
+          </DropdownMenu>
+        </Dropdown>
+      )
+    }
+
     return (
       <Dropdown isOpen={this.state.open} toggle={this.toggle}>
         <DropdownToggle caret>{this.state.exerciseType}</DropdownToggle>

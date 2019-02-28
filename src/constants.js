@@ -6,6 +6,11 @@ export const EXERCISE_TYPES = [
   'IntervalExercise',
 ];
 
+export const INTERVAL_SUB_TYPES = [
+  'MultisetExercise',
+  'CardioExercise',
+];
+
 export const LOAD_TYPES = {
   'PlainExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
   'MultisetExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
