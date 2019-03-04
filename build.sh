@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
-npm run build
+yarn
+yarn build
 mkdir build
 cp _redirects build/
