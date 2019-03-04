@@ -60,10 +60,14 @@ export class LoadFieldComponent extends Component {
                 })}
               </DropdownMenu>
             </InputGroupButtonDropdown>
-            <Input placeholder="Ex. 20" defaultValue={this.props.load.value} onChange={event => this.handleSetValue(event.target.value)} type="number" />
-            <InputGroupAddon addonType="append">
-              <InputGroupText>{suffices[this.state.load.type]}</InputGroupText>
-            </InputGroupAddon>
+            {this.state.load.type !== "BODYWEIGHT" && (
+              <>
+                <Input placeholder="Ex. 20" defaultValue={this.props.load.value} onChange={event => this.handleSetValue(event.target.value)} type="number" />
+                <InputGroupAddon addonType="append">
+                  <InputGroupText>{suffices[this.state.load.type]}</InputGroupText>
+                </InputGroupAddon>
+              </>
+            )}
           </InputGroup>
         </Col>
       </FormGroup>

@@ -12,11 +12,11 @@ export const INTERVAL_SUB_TYPES = [
 ];
 
 export const LOAD_TYPES = {
-  'PlainExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
-  'MultisetExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
-  'InlineExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
+  'PlainExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'MultisetExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'InlineExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
   'CardioExercise': ["PERCENTAGE", "HEARTRATE", "PACE"],
-  'IntervalExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE"],
+  'IntervalExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
 };
 
 export const WORK_TYPES = {

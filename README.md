@@ -106,11 +106,11 @@
 }
 ```
 
-[ ] Only make inline exercise available from multiset
+[x] Only make inline exercise available from multiset
 [x] Include templated parts of display and edit in all exercise type components
-[ ] Image selection
-[ ] Implement all exercise types
-[ ] Session storage instead of local storage
+[ ] ? Image selection
+[x] Implement all exercise types
+[x] Session storage instead of local storage
 [x] MDE for description
-[ ] Delete unused imports
+[x] Delete unused imports
 [x] Add rest
