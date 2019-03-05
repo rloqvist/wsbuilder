@@ -11,13 +11,11 @@ class App extends Component {
     }
   }
 
-  componentWillMount = async () => {
-    if (store) {
-
-      this.setState({
-        content: [...store.build],
-      })
-    }
+  componentWillMount = () => {
+    console.log('document.cookie', document.cookie);
+    this.setState({
+      content: [...store.build],
+    })
   }
 
   render() {
