@@ -44,5 +44,6 @@ export const suffices = {
   REPETITIONS: "reps",
   DISTANCE: "km",
   TIME: "s",
-  HEARTRATE: "bpm"
+  HEARTRATE: "bpm",
+  BODYWEIGHT: "bodyweight",
 }

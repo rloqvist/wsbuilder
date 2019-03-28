@@ -29,10 +29,10 @@ const DisplayExercise = args => {
 
 const EditExercise = args => {
   return (
-    <>
+    <Row form>
       <RoundsFieldComponent {...args} />
       <RestFieldComponent {...args} />
-    </>
+    </Row>
   )
 }
 
