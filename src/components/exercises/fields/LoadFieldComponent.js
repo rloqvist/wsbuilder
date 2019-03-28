@@ -48,9 +48,9 @@ export class LoadFieldComponent extends Component {
 
   render() {
     return (
-      <FormGroup row>
-        <Label sm={2}>Load</Label>
-        <Col sm={10}>
+      <Col md={this.props.size}>
+        <FormGroup>
+          <Label>Load</Label>
           <InputGroup>
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.load.type}</DropdownToggle>
@@ -69,8 +69,8 @@ export class LoadFieldComponent extends Component {
               </>
             )}
           </InputGroup>
-        </Col>
-      </FormGroup>
+        </FormGroup>
+      </Col>
     )
   }
 }

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup} from 'reactstrap';
+import {CardTitle, CardSubtitle, CardText, Button, Input, FormGroup, Row, Col} from 'reactstrap';
 import ReactMde from "react-mde";
 import {SelectExerciseTypeComponent} from './exercises/SelectExerciseTypeComponent';
 import {Exercises} from './exercises'
+import {EXERCISE_TYPES} from '../constants';
 import "react-mde/lib/styles/css/react-mde-all.css";
 import styled from 'styled-components';
 
@@ -17,7 +18,7 @@ const DisplayExercise = args => {
   return (
     <>
       <CardTitle><h4>{args.title}<Button color="link" onClick={() => args.onDelete(args.id)}>delete</Button></h4></CardTitle>
-      <CardSubtitle><b>{args.exerciseType}</b></CardSubtitle>
+      <CardSubtitle><b>{EXERCISE_TYPES[args.exerciseType]}</b></CardSubtitle>
       <WrapMarkdown><CardText dangerouslySetInnerHTML={{"__html": args.html}}></CardText></WrapMarkdown>
 
       {args.children}
@@ -28,17 +29,24 @@ const DisplayExercise = args => {
 const EditExercise = args => {
   return (
     <>
-      <FormGroup>
-        <Input
-          placeholder="Name your exercise"
-          defaultValue={args.title}
-          onChange={event => args.onSetTitle(event.target.value)}
-        />
-      </FormGroup>
+      <Row form>
+        <Col md={10}>
+          <FormGroup>
+            <Input
+              placeholder="Name your exercise"
+              defaultValue={args.title}
+              onChange={event => args.onSetTitle(event.target.value)}
+            />
+          </FormGroup>
+        </Col>
+        <Col md={2}>
+          <FormGroup>
+            <SelectExerciseTypeComponent {...args} />
+          </FormGroup>
+        </Col>
+      </Row>
 
-      <FormGroup>
-        <SelectExerciseTypeComponent {...args} />
-      </FormGroup>
+      {args.children}
 
       <FormGroup>
         <ReactMde
@@ -46,8 +54,6 @@ const EditExercise = args => {
           onChange={args.onSetDescription}
         />
       </FormGroup>
-
-      {args.children}
     </>
   )
 }

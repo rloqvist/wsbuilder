@@ -1,22 +1,30 @@
-export const EXERCISE_TYPES = [
-  'PlainExercise',
-  'MultisetExercise',
-  'InlineExercise',
-  'CardioExercise',
-  'IntervalExercise',
+export const EXERCISE_TYPE_OPTIONS = [
+  {
+    name: 'PlainExercise',
+    label: 'Normal'
+  },
+  {
+    name: 'MultisetExercise',
+    label: 'Combined',
+  },
 ];
+
+export const EXERCISE_TYPES = {
+  'PlainExercise': 'Normal',
+  'MultisetExercise': 'Combined',
+  'InlineExercise': 'Inner',
+}
 
 export const INTERVAL_SUB_TYPES = [
   'MultisetExercise',
-  'CardioExercise',
 ];
 
 export const LOAD_TYPES = {
-  'PlainExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
-  'MultisetExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
-  'InlineExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
-  'CardioExercise': ["PERCENTAGE", "HEARTRATE", "PACE"],
-  'IntervalExercise': ["WEIGHT", "PERCENTAGE", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'PlainExercise': ["WEIGHT", "PERCENT", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'MultisetExercise': ["WEIGHT", "PERCENT", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'InlineExercise': ["WEIGHT", "PERCENT", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
+  'CardioExercise': ["PERCENT", "HEARTRATE", "PACE"],
+  'IntervalExercise': ["WEIGHT", "PERCENT", "HEIGHT", "LENGTH", "DISTANCE", "HEARTRATE", "PACE", "BODYWEIGHT"],
 };
 
 export const WORK_TYPES = {
@@ -30,7 +38,7 @@ export const WORK_TYPES = {
 export const suffices = {
   PACE: "km/h",
   WEIGHT: "kg",
-  PERCENTAGE: "%",
+  PERCENT: "%",
   HEIGHT: "cm",
   LENGTH: "m",
   REPETITIONS: "reps",

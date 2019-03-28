@@ -48,9 +48,9 @@ export class WorkFieldComponent extends Component {
 
   render() {
     return (
-      <FormGroup row>
-        <Label sm={2}>Work</Label>
-        <Col sm={10}>
+      <Col sm={this.props.size}>
+        <FormGroup>
+          <Label>Work</Label>
           <InputGroup>
             <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.open} toggle={this.toggle}>
               <DropdownToggle caret>{this.state.work.type}</DropdownToggle>
@@ -65,8 +65,8 @@ export class WorkFieldComponent extends Component {
               <InputGroupText>{suffices[this.state.work.type]}</InputGroupText>
             </InputGroupAddon>
           </InputGroup>
-        </Col>
-      </FormGroup>
+        </FormGroup>
+      </Col>
     )
   }
 }

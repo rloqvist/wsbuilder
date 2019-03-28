@@ -22,12 +22,12 @@ export class RestFieldComponent extends Component {
 
   render() {
     return (
-      <FormGroup row>
-        <Label sm={2}>Rest</Label>
-        <Col sm={10}>
+      <Col sm={this.props.size}>
+        <FormGroup>
+          <Label>Rest</Label>
           <Input placeholder="Ex. 20" defaultValue={this.props.rest} onChange={event => this.handleSetRest(event.target.value)} type="number" />
-        </Col>
-      </FormGroup>
+        </FormGroup>
+      </Col>
     )
   }
 }

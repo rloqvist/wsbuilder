@@ -22,12 +22,12 @@ export class RoundsFieldComponent extends Component {
 
   render() {
     return (
-      <FormGroup row>
-        <Label sm={2}>Rounds</Label>
-        <Col sm={10}>
+      <Col sm={this.props.size}>
+        <FormGroup>
+          <Label>Rounds</Label>
           <Input placeholder="Ex. 3" defaultValue={this.props.rounds} onChange={event => this.handleSetRounds(event.target.value)} type="number" />
-        </Col>
-      </FormGroup>
+        </FormGroup>
+      </Col>
     )
   }
 }

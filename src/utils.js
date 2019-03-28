@@ -16,7 +16,7 @@ export const samplePlainExercise = (title, parentId) => {
       value: 10,
     },
     rounds: 3,
-    description: "Replace this description with something for your exercise",
+    description: "*Replace this description with something for your exercise*",
     content: [],
   }
 };

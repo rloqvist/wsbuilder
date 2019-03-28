@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import {EXERCISE_TYPES, INTERVAL_SUB_TYPES} from '../../constants';
+import {EXERCISE_TYPE_OPTIONS, INTERVAL_SUB_TYPES, EXERCISE_TYPES} from '../../constants';
 import {store} from '../../store';
 
 export class SelectExerciseTypeComponent extends Component {
@@ -28,25 +28,14 @@ export class SelectExerciseTypeComponent extends Component {
 
     if (parentItem.exerciseType === 'MultisetExercise') {
       return null;
-    } else if (parentItem.exerciseType === 'IntervalExercise') {
-      return (
-        <Dropdown isOpen={this.state.open} toggle={this.toggle}>
-          <DropdownToggle caret>{this.state.exerciseType}</DropdownToggle>
-          <DropdownMenu>
-            {INTERVAL_SUB_TYPES.map((type, index) =>{
-              return <DropdownItem key={type} onClick={() => this.handleSetType(type)}>{type}</DropdownItem>
-            })}
-          </DropdownMenu>
-        </Dropdown>
-      )
     }
 
     return (
       <Dropdown isOpen={this.state.open} toggle={this.toggle}>
-        <DropdownToggle caret>{this.state.exerciseType}</DropdownToggle>
+        <DropdownToggle caret>{EXERCISE_TYPES[this.state.exerciseType]}</DropdownToggle>
         <DropdownMenu>
-          {EXERCISE_TYPES.map((type, index) =>{
-            return <DropdownItem key={type} onClick={() => this.handleSetType(type)}>{type}</DropdownItem>
+          {EXERCISE_TYPE_OPTIONS.map((option, index) =>{
+            return <DropdownItem key={option.name} onClick={() => this.handleSetType(option.name)}>{option.label}</DropdownItem>
           })}
         </DropdownMenu>
       </Dropdown>
