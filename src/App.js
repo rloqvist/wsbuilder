@@ -11,8 +11,11 @@ class App extends Component {
     }
   }
 
-  componentWillMount = () => {
+  componentWillMount = async () => {
     console.log('document.cookie', document.cookie);
+
+    fetch("http://localhost:5000/foo").then(result => console.log(result))
+
     this.setState({
       content: [...store.build],
     })

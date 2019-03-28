@@ -120,16 +120,10 @@ export class SegmentContainer extends Component {
           }) : <div><h5><i>No content in this segment yet.</i></h5></div>}
 
 
-          {!!this.props.parentId ? (
-            <Row>
-              <Col sm="6">
-                <NewExerciseComponent onCreate={this.handleAddExercise} />
-              </Col>
-              <Col sm="6">
-                <NewSegmentComponent onCreate={this.handleAddSegment} />
-              </Col>
-            </Row>
-          ) : <NewSegmentComponent onCreate={this.handleAddSegment} />}
+          {!!this.props.parentId
+            ? <NewExerciseComponent onCreate={this.handleAddExercise} />
+            : <NewSegmentComponent onCreate={this.handleAddSegment} />
+          }
 
 
         </StyledSegmentWrapper>
